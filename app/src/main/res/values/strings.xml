@@ -11,4 +11,6 @@
     <string name="save">save</string>
     <string name="description">Description</string>
     <string name="something">Something</string>
+    <string name="name">Name</string>
+    <string name="enter_name">Enter name</string>
 </resources>

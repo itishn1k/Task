@@ -8,6 +8,7 @@ import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.example.task.databinding.FragmentProfileBinding
@@ -16,9 +17,9 @@ import com.example.task.databinding.FragmentProfileBinding
 class ProfileFragment : Fragment() {
 
     private val IMAGE_GALLERY_REQUEST_CODE: Int = 555
-    private var _binding: FragmentProfileBinding? = null
+    private lateinit var _binding: FragmentProfileBinding
 
-    private val binding get() = _binding!!
+    private val binding get() = _binding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,8 +38,11 @@ class ProfileFragment : Fragment() {
     }
 
     private fun clickListener() {
-        _binding?.ivProfile?.setOnClickListener {
+        _binding.ivProfile.setOnClickListener {
             openFile()
+        }
+        _binding.tvUserName.setOnClickListener {
+            _binding.etContainer.visibility = View.VISIBLE
         }
     }
 
@@ -54,13 +58,9 @@ class ProfileFragment : Fragment() {
         if (requestCode == IMAGE_GALLERY_REQUEST_CODE) {
             if (resultCode == RESULT_OK && requestCode == IMAGE_GALLERY_REQUEST_CODE) {
                 val imageUri = data?.data
-                _binding!!.ivProfile.setImageURI(imageUri)
+                _binding.ivProfile.setImageURI(imageUri)
             }
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }
