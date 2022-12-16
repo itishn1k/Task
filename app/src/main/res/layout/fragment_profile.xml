@@ -8,20 +8,28 @@
     android:padding="24dp"
     tools:context=".ui.profile.ProfileFragment">
 
-    <androidx.cardview.widget.CardView
+    <!--    <androidx.cardview.widget.CardView-->
+    <!--        android:layout_width="128dp"-->
+    <!--        android:layout_height="128dp"-->
+    <!--        android:layout_gravity="center"-->
+    <!--        app:cardCornerRadius="90dp">-->
+
+    <!--        <ImageView-->
+    <!--            android:id="@+id/iv_profile"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:scaleType="centerCrop"-->
+    <!--            android:src="@drawable/profile"-->
+    <!--            tools:ignore="ContentDescription" />-->
+    <!--    </androidx.cardview.widget.CardView>-->
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_profile"
         android:layout_width="128dp"
         android:layout_height="128dp"
         android:layout_gravity="center"
-        app:cardCornerRadius="90dp">
-
-        <ImageView
-            android:id="@+id/iv_profile"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/profile"
-            tools:ignore="ContentDescription" />
-    </androidx.cardview.widget.CardView>
+        android:scaleType="centerCrop"
+        android:src="@drawable/profile" />
 
     <TextView
         android:id="@+id/tv_user_name"
