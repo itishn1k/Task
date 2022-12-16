@@ -31,7 +31,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.fab.setOnClickListener{
-            findNavController().navigate(R.id.taskFragment)
+            findNavController().navigate(R.id.navigation_task)
         }
     }
 

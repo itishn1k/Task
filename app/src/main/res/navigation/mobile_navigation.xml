@@ -30,8 +30,14 @@
         tools:layout="@layout/fragment_profile" />
 
     <fragment
-        android:id="@+id/taskFragment"
+        android:id="@+id/navigation_task"
         android:name="com.example.task.ui.task.TaskFragment"
-        android:label="Task"
+        android:label="@string/task"
         tools:layout="@layout/fragment_task" />
+
+    <fragment
+        android:id="@+id/navigation_on_boarding"
+        android:name="com.example.task.ui.onBoarding.OnBoardingFragment"
+        android:label="fragment_on_boarding"
+        tools:layout="@layout/fragment_on_boarding" />
 </navigation>

@@ -1,32 +1,53 @@
 package com.example.task.ui.onBoarding.adapter
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.task.databinding.ItemBoardingBinding
+import com.example.task.extension.loadImage
 import com.example.task.model.OnBoard
 
 class OnBoardingAdapter : RecyclerView.Adapter<OnBoardingAdapter.OnBoardingViewHolder>() {
 
-    private var data= arrayListOf<OnBoard>(
-        OnBoard()
+    private var data = arrayListOf(
+        OnBoard(
+            "https://user-images.githubusercontent.com/96876621/208057403-41a19d9e-0072-4028-977c-32e1ccd306d1.png",
+            "Productivity"
+        ),
+        OnBoard(
+            "https://user-images.githubusercontent.com/96876621/208063667-a4bf40de-cf16-4c40-ad39-b51b29ac8ee0.png",
+            "Made by those who use"
+        ),
+        OnBoard(
+            "https://user-images.githubusercontent.com/96876621/208063679-b1d4fd9e-f2d5-4848-a2c7-fd94d0e21902.png",
+            "Sync with other devices"
+        )
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OnBoardingViewHolder {
-        TODO("Not yet implemented")
+        return OnBoardingViewHolder(
+            ItemBoardingBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: OnBoardingViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.bind(data[position])
     }
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-    }
+    override fun getItemCount() = data.size
 
 
     inner class OnBoardingViewHolder(private val binding: ItemBoardingBinding) :
         ViewHolder(binding.root) {
+        fun bind(onBoard: OnBoard) {
+            binding.ivBoarding.loadImage(onBoard.image!!)
+            binding.tvTitle.text = onBoard.title
+        }
 
     }
 }
