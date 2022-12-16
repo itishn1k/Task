@@ -1,14 +1,17 @@
 package com.example.task.ui.onBoarding.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.task.R
 import com.example.task.databinding.ItemBoardingBinding
 import com.example.task.extension.loadImage
 import com.example.task.model.OnBoard
 
-class OnBoardingAdapter : RecyclerView.Adapter<OnBoardingAdapter.OnBoardingViewHolder>() {
+class OnBoardingAdapter(private val context: Context, private val onClick: () -> Unit) :
+    RecyclerView.Adapter<OnBoardingAdapter.OnBoardingViewHolder>() {
 
     private var data = arrayListOf(
         OnBoard(
@@ -47,7 +50,11 @@ class OnBoardingAdapter : RecyclerView.Adapter<OnBoardingAdapter.OnBoardingViewH
         fun bind(onBoard: OnBoard) {
             binding.ivBoarding.loadImage(onBoard.image!!)
             binding.tvTitle.text = onBoard.title
+            if (adapterPosition == data.lastIndex) binding.tvSkip.text =
+                context.getString(R.string.next) else context.getString(R.string.skip)
+            binding.tvSkip.setOnClickListener {
+                onClick()
+            }
         }
-
     }
 }

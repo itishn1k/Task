@@ -5,23 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--    <ImageView-->
-    <!--        android:id="@+id/iv_boarding"-->
-    <!--        android:layout_width="200dp"-->
-    <!--        android:layout_height="200dp"-->
-    <!--        android:layout_marginBottom="96dp"-->
-    <!--        android:src="@mipmap/ic_launcher"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        tools:ignore="ContentDescription" />-->
-
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv_boarding"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginBottom="96dp"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:layout_marginBottom="128dp"
+        android:scaleType="centerCrop"
         android:src="@drawable/profile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,6 +29,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_boarding" />
 
+
     <TextView
         android:id="@+id/tv_skip"
         android:layout_width="wrap_content"
@@ -51,5 +41,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <!--        <ImageView-->
+    <!--            android:id="@+id/iv_boarding"-->
+    <!--            android:layout_width="200dp"-->
+    <!--            android:layout_height="200dp"-->
+    <!--            android:layout_marginBottom="96dp"-->
+    <!--            android:src="@drawable/profile"-->
+    <!--            android:scaleType="centerCrop"-->
+    <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintTop_toTopOf="parent"-->
+    <!--            tools:ignore="ContentDescription" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
