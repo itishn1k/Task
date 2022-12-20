@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="24dp"
+    android:paddingHorizontal="24dp"
     tools:context=".ui.profile.ProfileFragment">
 
     <!--    <androidx.cardview.widget.CardView-->
@@ -29,36 +29,73 @@
         android:layout_height="128dp"
         android:layout_gravity="center"
         android:scaleType="centerCrop"
-        android:src="@drawable/profile" />
-
-    <TextView
-        android:id="@+id/tv_user_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:hint="@string/enter_name"
-        android:textSize="24sp" />
+        android:src="@drawable/profile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/et_container"
+        android:id="@+id/user_name_container"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:visibility="gone"
+        android:layout_marginTop="8dp"
         app:counterEnabled="true"
-        app:counterMaxLength="24">
+        app:counterMaxLength="24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_gen_container">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_user_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="@string/something"
+            android:hint="@string/name"
             android:inputType="text"
             android:lines="1"
             android:maxLength="24" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/user_age_container"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        app:counterEnabled="true"
+        app:counterMaxLength="3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</LinearLayout>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_user_age"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/age"
+            android:inputType="number"
+            android:lines="1"
+            android:maxLength="3" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/user_gen_container"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:counterEnabled="true"
+        app:counterMaxLength="16"
+        app:layout_constraintEnd_toEndOf="@+id/user_age_container"
+        app:layout_constraintTop_toBottomOf="@+id/user_age_container">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_user_gen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/gender"
+            android:inputType="textFilter"
+            android:lines="1"
+            android:maxLength="16" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.example.task.data.Pref
 import com.example.task.databinding.FragmentOnBoardingBinding
 import com.example.task.ui.onBoarding.adapter.OnBoardingAdapter
 import me.relex.circleindicator.CircleIndicator3
@@ -31,9 +32,12 @@ class OnBoardingFragment : Fragment() {
     }
 
     private fun onClick() {
+        val pref = Pref(requireContext())
+        pref.setOnBoardingSeen(true)
         findNavController().navigateUp()
     }
 
+    //circle indicator
     private fun attachIndicator() {
         val indicator: CircleIndicator3 = binding.indicator
         val viewpager = binding.viewPager

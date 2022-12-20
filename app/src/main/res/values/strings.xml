@@ -16,4 +16,9 @@
     <string name="skip">Skip</string>
     <string name="task">Task</string>
     <string name="next">Next</string>
+    <string name="enter">enter</string>
+    <string name="kayrat_mamataev">Kayrat Mamataev</string>
+    <string name="example_gmail_com">example@gmail.com</string>
+    <string name="age">Age</string>
+    <string name="gender">Gender</string>
 </resources>
