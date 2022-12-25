@@ -20,7 +20,6 @@ class ProfileFragment : Fragment() {
     private lateinit var pref: Pref
     private lateinit var binding: FragmentProfileBinding
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -34,7 +33,6 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         clickListener()
     }
-
 
     private fun clickListener() {
         pref = Pref(requireContext())
