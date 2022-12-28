@@ -8,5 +8,5 @@ import java.io.Serializable
 data class Task(
     @PrimaryKey(autoGenerate = true) var id: Int? = null,
     var title: String? = null,
-    val desc: String? = null
+    var desc: String? = null
 ) : Serializable

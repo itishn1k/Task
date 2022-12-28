@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.task.App
@@ -25,7 +26,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        adapter = TaskAdapter(this::onClick)
+        adapter = TaskAdapter(this::onLongClick, this::onClick)
     }
 
     override fun onCreateView(
@@ -42,9 +43,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.rvTasks.adapter = adapter
-        data = App.db.dao().getAll()
-        adapter.addTasks(data)
-        //
+        setData()
         clickListener()
     }
 
@@ -54,27 +53,38 @@ class HomeFragment : Fragment() {
         }
     }
 
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun setData() {
+        data = App.db.dao().getAll()
+        adapter.addTasks(data)
     }
 
-    private fun onClick(position: Int) {
+
+    private fun onLongClick(task: Task) {
         val builder = AlertDialog.Builder(requireContext())
 
         builder.setTitle("Delete")
         builder.setMessage("Are you sure you want to delete this note?")
 
         builder.setPositiveButton("Yes") { _: DialogInterface, _: Int ->
-            App.db.dao().delete(data[position])
-            findNavController().run {
-                popBackStack()
-                navigate(R.id.navigation_home)
-            }
+            App.db.dao().delete(task)
+            setData()
         }
         builder.setNegativeButton("No") { _: DialogInterface, _: Int ->
         }
         builder.show()
+    }
+
+    private fun onClick(task: Task) {
+        findNavController().navigate(R.id.navigation_task, bundleOf(KEY_FOR_TASK to task))
+    }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    companion object {
+        const val KEY_FOR_TASK = "task"
     }
 }

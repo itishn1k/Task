@@ -8,7 +8,8 @@ import com.example.task.databinding.ItemTaskBinding
 import com.example.task.model.Task
 
 class TaskAdapter(
-    private val onClick: (pos: Int) -> Unit) :
+    private val onLongClick: (Task) -> Unit,
+    private val onClick: (Task) -> Unit) :
     RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
     private val data: ArrayList<Task> = arrayListOf()
@@ -43,8 +44,11 @@ class TaskAdapter(
             binding.tvDesc.text = task.desc
 
             itemView.setOnLongClickListener {
-                onClick(adapterPosition)
-                return@setOnLongClickListener false
+                onLongClick(task)
+                false
+            }
+            itemView.setOnClickListener {
+                onClick(task)
             }
         }
 
