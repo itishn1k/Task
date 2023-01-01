@@ -22,4 +22,6 @@
     <string name="age">Age</string>
     <string name="gender">Gender</string>
     <string name="update">update</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="sign_in_with_microsoft">Sign in with Microsoft</string>
 </resources>

@@ -10,6 +10,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.task.data.Pref
 import com.example.task.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val pref = Pref(this)
+        val auth = FirebaseAuth.getInstance()
 
         val navView: BottomNavigationView = binding.navView
 
@@ -30,6 +32,10 @@ class MainActivity : AppCompatActivity() {
         if (!pref.isOnBoardingSeen())
             navController.navigate(R.id.navigation_on_boarding)
 
+        if (auth.currentUser==null){
+            navController.navigate(R.id.authFragment)
+        }
+
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_home,
@@ -37,6 +43,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_notifications,
                 R.id.navigation_profile,
                 R.id.navigation_task
+
             )
         )
         val navFragments = arrayListOf(
@@ -48,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         )
         navController.addOnDestinationChangedListener { _, destination, _ ->
             navView.isVisible = navFragments.contains(destination.id)
-            if (destination.id == R.id.navigation_on_boarding) {
+            if (destination.id == R.id.navigation_on_boarding || destination.id == R.id.authFragment) {
                 supportActionBar?.hide()
             } else supportActionBar?.show()
         }
