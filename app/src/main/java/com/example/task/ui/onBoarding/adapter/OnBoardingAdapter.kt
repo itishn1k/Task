@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.task.R
 import com.example.task.databinding.ItemBoardingBinding
-import com.example.task.extension.loadImage
 import com.example.task.model.OnBoard
 
 class OnBoardingAdapter(private val context: Context, private val onClick: () -> Unit) :

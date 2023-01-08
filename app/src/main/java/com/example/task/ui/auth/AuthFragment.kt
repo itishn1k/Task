@@ -43,7 +43,7 @@ class AuthFragment : Fragment() {
                 BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
                     .setSupported(true)
                     .setServerClientId(getString(R.string.default_web_client_id))
-                    .setFilterByAuthorizedAccounts(false)
+//                    .setFilterByAuthorizedAccounts(false)
                     .build()
             )
             .build()
@@ -55,6 +55,7 @@ class AuthFragment : Fragment() {
 
     private fun signInWithGoogle() {
         oneTapClient.beginSignIn(signInRequest).addOnSuccessListener {
+            @Suppress("DEPRECATION")
             startIntentSenderForResult(
                 it.pendingIntent.intentSender, REQ_ONE_TAP,
                 null, 0, 0, 0, null
@@ -64,10 +65,12 @@ class AuthFragment : Fragment() {
         }
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(
         requestCode: Int,
         resultCode: Int, data: Intent?,
     ) {
+        @Suppress("DEPRECATION")
         super.onActivityResult(requestCode, resultCode, data)
         when (requestCode) {
             REQ_ONE_TAP -> try {

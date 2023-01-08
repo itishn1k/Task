@@ -70,4 +70,5 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
 
     implementation("com.airbnb.android:lottie:5.2.0")
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.4.1'
 }

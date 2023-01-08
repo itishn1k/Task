@@ -13,7 +13,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import com.example.task.data.Pref
 import com.example.task.databinding.FragmentProfileBinding
-import com.example.task.extension.loadImage
+import com.example.task.utils.loadImage
 
 class ProfileFragment : Fragment() {
 
